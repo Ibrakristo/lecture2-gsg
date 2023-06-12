@@ -47,6 +47,17 @@ app.get("/tasks",(req,res,next)=>{
     res.end(str?str:"There is no Tasks");
 })
 
+app.get("/tasks/:id",(req,res,next)=>{
+    let str = arr.find((value)=>{
+        if(value.id == Number(req.params.id)){
+            return true;
+        }
+        return false;
+    })
+    
+    res.end(str?str.toString():"Task does not exist");
+})
+
 app.post("/tasks",(req,res,next)=>{
     let task = (req.body);
     let str = check(req.body);
